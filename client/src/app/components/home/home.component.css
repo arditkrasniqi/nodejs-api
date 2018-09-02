@@ -1,0 +1,18 @@
+.product-card {
+  width: 80%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+  text-align: right;
+}
+
+.h-width {
+  width: 50%;
+}

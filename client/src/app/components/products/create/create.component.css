@@ -1,0 +1,22 @@
+.create-product-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.cp-title {
+  text-align: center;
+}
+
+.block {
+  display: block;
+}
+
+#productImage {
+  display: none;
+}
+.product-description{
+  min-height:200px;
+}

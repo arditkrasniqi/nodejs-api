@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="signup-title">
+    Signup
+  </h1>
+  <form [formGroup]="signupForm" class="signup-form">
+    <mat-form-field>
+      <input name="email" matInput formControlName="email" placeholder="Email" type="email">
+      <mat-error align="start" *ngIf="formErrors.email" class="form__error">{{ formErrors.email }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="password" matInput formControlName="password" placeholder="Password" type="password">
+      <mat-error align="start" *ngIf="formErrors.password" class="form__error">{{ formErrors.password }}</mat-error>
+    </mat-form-field>
+
+    <button class="mat-primary" mat-raised-button (click)="signup()">Signup</button>
+    <p>
+      <a class="block" mat-button routerLink="/login">Login</a>
+    </p>
+  </form>
+</div>

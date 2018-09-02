@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>My Products</h1>
+  <svg *ngIf="products === undefined" width="100px" height="100px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+  </svg>
+  <p *ngIf="products !== undefined && products.length < 1">You have no products.</p>
+  <a routerLink="create" mat-button>
+    <i class="material-icons">add</i> add product
+  </a>
+  <div class="mat-elevation-z8" *ngIf="products !== undefined && products.length > 0">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No.</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price</th>
+          <td mat-cell *matCellDef="let element"> {{element.price}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="userId">
+          <th mat-header-cell *matHeaderCellDef> Orders</th>
+          <td mat-cell *matCellDef="let element"><a routerLink='/orders/{{element.id}}' mat-button>Check orders</a></td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>
+            <span *ngIf="!spinner" class="right-btn">Delete</span>
+            <svg *ngIf="spinner" class="spinner right-btn" width="20px" height="20px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+              <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button class="right-btn" (click)="deleteProduct(element.id)"><i class="material-icons">delete</i></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  </div>

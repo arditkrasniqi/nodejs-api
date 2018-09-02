@@ -1,0 +1,60 @@
+<!-- <p *ngIf="orders.length === 0">No orders found.</p>
+<div *ngFor="let order of orders">
+  {{order.product.name}} - ${{order.quantity}} posted at: <i>{{order.postedAt()}} {{order.markAsDone}}</i>
+</div> -->
+
+
+<div class="container">
+  <h1>Orders</h1>
+  <svg *ngIf="orders === undefined" width="100px" height="100px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+  </svg>
+  <p *ngIf="orders !== undefined && orders.length < 1">No orders found.</p>
+  <div class="mat-elevation-z8" *ngIf="orders !== undefined && orders.length > 0">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No.</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> Product Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.product.name}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity</th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.postedAt()}}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="markAsDone">
+        <th mat-header-cell *matHeaderCellDef>
+          <span *ngIf="!spinner" class="right-btn">Mark as done</span>
+          <svg *ngIf="spinner" class="spinner right-btn" width="20px" height="20px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </th>
+        <td mat-cell *matCellDef="let element"><a (click)="markAsDone(element.id)" class="right-btn" mat-button><i
+              class="material-icons">
+              check_circle_outline
+            </i></a></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+</div>

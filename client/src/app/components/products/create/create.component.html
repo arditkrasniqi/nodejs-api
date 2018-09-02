@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="cp-title">
+    Create product
+  </h1>
+  <form [formGroup]="createForm" class="create-product-form">
+    <mat-form-field>
+      <input name="name" matInput formControlName="name" placeholder="Name" type="text">
+      <mat-error align="start" *ngIf="formErrors.name" class="form__error">{{ formErrors.name }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input name="price" matInput formControlName="price" placeholder="Price" type="number">
+      <mat-error align="start" *ngIf="formErrors.price" class="form__error">{{ formErrors.price }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea name="price" matInput formControlName="description" class="product-description" placeholder="Description"></textarea>
+      <mat-error align="start" *ngIf="formErrors.description" class="form__error">{{ formErrors.description }}</mat-error>
+    </mat-form-field>
+    <div class="mat-form-field-wrapper">
+      <button (click)="openProductImageFile()" mat-button>
+        <i class="material-icons">attach_file</i>
+        <span *ngIf="!productFileName">Choose image</span>
+        <span *ngIf="productFileName">{{productFileName}}</span>
+      </button>
+      <input (change)="productImageOnChange()" name="productImage" formControlName="productImage" class="none" id="productImage"
+        placeholder="Image" type="file">
+      <mat-error align="start" *ngIf="formErrors.productImage" class="form__error">{{ formErrors.productImage }}</mat-error>
+    </div>
+
+    <button class="mat-primary" mat-raised-button (click)="createProduct()">Create</button>
+  </form>
+</div>

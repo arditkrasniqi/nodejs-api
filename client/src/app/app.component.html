@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span><a routerLink="/">Home</a></span>
+    <span class="mat-spacer"></span>
+    <div *ngIf="userService.isAuthenticated()">
+      <a class="tb-link" routerLink="/products">Products</a>
+      <a class="tb-link" (click)="logout()">Logout</a>
+    </div>
+    <div *ngIf="!userService.isAuthenticated()">
+      <a class="tb-link" routerLink="login">Login</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

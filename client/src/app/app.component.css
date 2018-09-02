@@ -1,0 +1,35 @@
+.mat-toolbar {
+  background: #3f51b5 !important;
+  color: white !important;
+}
+
+.mat-toolbar-row span a {
+  color: white;
+  text-decoration: none;
+}
+
+.tb-link {
+  color: white;
+  margin-left: 10px;
+  display: inline-block;
+  font-weight: normal;
+  font-size: 15px;
+  text-decoration: none;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  cursor: pointer;
+}
+
+.tb-link:hover {
+  border-bottom: 2px solid white;
+}
+
+.mat-spacer {
+  flex: 1 1 auto;
+}
+
+.product-card {
+  width: 80%;
+  max-width: 500px;
+  margin: 20px auto;
+}

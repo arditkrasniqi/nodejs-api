@@ -1,0 +1,29 @@
+<!--<p>-->
+<!--home works!-->
+<!--</p>-->
+<!--<a routerLink="login">Login</a>-->
+
+<mat-card class="product-card" *ngFor="let product of products">
+  <!--<mat-card-header>-->
+  <!--<div mat-card-avatar class="example-header-image"></div>-->
+  <!--<mat-card-title>Shiba Inu</mat-card-title>-->
+  <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+  <!--</mat-card-header>-->
+  <img mat-card-image [src]="product.image" alt="The product image">
+  <mat-card-content>
+    <p>
+      <span class="h-width float-left">
+        <b>{{product.name}}</b> - <i>${{product.price}}</i>
+      </span>
+      <span class="h-width float-right">
+        {{product.postedAt()}}
+      </span>
+    </p>
+    <br />
+    <p><strong>About this product:</strong></p>
+    <p>{{product.description}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button routerLink="product-details/{{product.id}}">MORE INFO</button>
+  </mat-card-actions>
+</mat-card>
