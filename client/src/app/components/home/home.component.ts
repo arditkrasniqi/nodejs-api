@@ -8,7 +8,7 @@ import { Product } from '../../models/product';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  products: Product[] = [];
+  products: Product[];
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   getAllProducts() {
     this.productService.getAllProducts().subscribe(response => {
+      this.products = [];
       response['products'].forEach((product, index) => {
         const p = new Product(product.doc);
         this.products.push(p);

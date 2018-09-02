@@ -2,28 +2,41 @@
 <!--home works!-->
 <!--</p>-->
 <!--<a routerLink="login">Login</a>-->
-
-<mat-card class="product-card" *ngFor="let product of products">
-  <!--<mat-card-header>-->
-  <!--<div mat-card-avatar class="example-header-image"></div>-->
-  <!--<mat-card-title>Shiba Inu</mat-card-title>-->
-  <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
-  <!--</mat-card-header>-->
-  <img mat-card-image [src]="product.image" alt="The product image">
-  <mat-card-content>
-    <p>
-      <span class="h-width float-left">
-        <b>{{product.name}}</b> - <i>${{product.price}}</i>
-      </span>
-      <span class="h-width float-right">
-        {{product.postedAt()}}
-      </span>
-    </p>
-    <br />
-    <p><strong>About this product:</strong></p>
-    <p>{{product.description}}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button routerLink="product-details/{{product.id}}">MORE INFO</button>
-  </mat-card-actions>
-</mat-card>
+<div class="container">
+  <div class="block text-center" *ngIf="products === undefined">
+    <svg width="100px" height="100px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+    </svg>
+  </div>
+  <div *ngIf="products !== undefined && products.length < 1">
+    <p>No products found.</p>
+    <p><a routerLink="login">Login</a> and share your products with the world.</p>
+    <p><a routerLink="signup">Create an account</a> for free if you dont have one.</p>
+  </div>
+</div>
+<div *ngIf="products !== undefined && products.length > 0">
+  <mat-card class="product-card" *ngFor="let product of products">
+    <!--<mat-card-header>-->
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <!--<mat-card-title>Shiba Inu</mat-card-title>-->
+    <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+    <!--</mat-card-header>-->
+    <img mat-card-image [src]="product.image" alt="The product image">
+    <mat-card-content>
+      <p>
+        <span class="h-width float-left">
+          <b>{{product.name}}</b> - <i>${{product.price}}</i>
+        </span>
+        <span class="h-width float-right">
+          {{product.postedAt()}}
+        </span>
+      </p>
+      <br />
+      <p><strong>About this product:</strong></p>
+      <p>{{product.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button routerLink="product-details/{{product.id}}">MORE INFO</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
