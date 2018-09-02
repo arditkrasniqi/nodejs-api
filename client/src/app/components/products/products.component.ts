@@ -41,7 +41,7 @@ export class ProductsComponent implements OnInit {
     this.spinner = true;
     this.userService.deleteProduct(id).subscribe(response => {
       this.products = [];
-      response.map(product => {
+      response['result'].map(product => {
         this.products.push(new Product(product));
       });
       this.buildDataSource(this.products);
